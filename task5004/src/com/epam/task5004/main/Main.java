@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        TreasuresLoader loader = new TreasuresLoader(Path.of("D:/introduction-to-java/epam-introduction-to-java-module05-task5004/task5004/src/com/epam/task5004/logic/treasures.txt"));
+        TreasuresLoader loader = new TreasuresLoader(Path.of("task5004/src/com/epam/task5004/logic/treasures.txt"));
         ArrayList<Treasure> treasures = loader.loadTreasures();
         Logic logic = new Logic(treasures);
         logic.start();
