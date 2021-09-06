@@ -1,4 +1,4 @@
-package com.epam.task5004.main;
+package by.epam.task5004.main;
 //Задача 4.
 //Создать консольное приложение, удовлетворяющее следующим требованиям:
 //• Приложение должно быть объектно-, а не процедурно-ориентированным.
@@ -12,19 +12,24 @@ package com.epam.task5004.main;
 //дракона. Реализовать возможность просмотра сокровищ, выбора самого дорогого по стоимости сокровища и
 //выбора сокровищ на заданную сумму.
 
-import com.epam.task5004.logic.Logic;
-import com.epam.task5004.logic.TreasuresLoader;
-import com.epam.task5004.treasures.Treasure;
+import by.epam.task5004.logic.TreasuresLoaderUtil;
+import by.epam.task5004.logic.UserInput;
+import by.epam.task5004.logic.UserViewAction;
+import by.epam.task5004.treasures.Treasure;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        TreasuresLoader loader = new TreasuresLoader(Path.of("task5004/src/com/epam/task5004/logic/treasures.txt"));
-        ArrayList<Treasure> treasures = loader.loadTreasures();
-        Logic logic = new Logic(treasures);
-        logic.start();
+        UserInput input;
+        UserViewAction userViewAction;
+        List<Treasure> treasures;
+
+        treasures = TreasuresLoaderUtil.loadTreasures(Path.of("task5004/src/by/epam/task5004/main/treasures.txt"));
+        input = new UserInput();
+        userViewAction=new UserViewAction(input,treasures);
+        userViewAction.start();
     }
 }

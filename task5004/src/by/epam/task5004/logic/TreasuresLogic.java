@@ -1,11 +1,24 @@
-package com.epam.task5004.treasures;
+package by.epam.task5004.logic;
+
+import by.epam.task5004.treasures.Treasure;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
-public class Treasures {
-    public static Treasure findTheMostExpensive(ArrayList<Treasure> treasures) {
+public class TreasuresLogic {
+    private List<Treasure> treasures;
+
+    public TreasuresLogic(List<Treasure> treasures){
+        if(treasures!=null){
+            this.treasures=treasures;
+        } else{
+            this.treasures=new ArrayList<>();
+        }
+    }
+
+    public Treasure findTheMostExpensive() {
         BigDecimal maxCost = BigDecimal.ZERO;
         Treasure mustExpensiveTreasure = null;
         for (Treasure treasure : treasures) {
@@ -17,15 +30,21 @@ public class Treasures {
         return mustExpensiveTreasure;
     }
 
-    public static void printTreasures(ArrayList<Treasure> treasures){
-        for (Treasure treasure : treasures) {
-            System.out.println(treasure);
+    public List<Treasure> getTreasures(){
+        return treasures;
+    }
+
+    public void setTreasures(List<Treasure> treasures) {
+        if(treasures!=null) {
+            this.treasures = treasures;
+        } else{
+            this.treasures=new ArrayList<>();
         }
     }
 
-    public static ArrayList<Treasure> selectTreasuresForAGivenAmount(ArrayList<Treasure> treasures, BigDecimal amount){
+    public List<Treasure> selectTreasuresForAGivenAmount(BigDecimal amount){
         BigDecimal currentAmount=BigDecimal.ZERO;
-        ArrayList<Treasure> selectedTreasures=new ArrayList<>();
+        List<Treasure> selectedTreasures=new ArrayList<>();
         treasures.sort(Comparator.comparing(Treasure::getCost).reversed());
         for (Treasure treasure : treasures) {
             currentAmount = currentAmount.add(treasure.getCost());

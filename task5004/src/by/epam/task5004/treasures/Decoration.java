@@ -1,4 +1,4 @@
-package com.epam.task5004.treasures;
+package by.epam.task5004.treasures;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
