@@ -22,11 +22,16 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        Path treasuresPath;
         UserInput input;
         UserViewAction userViewAction;
         List<Treasure> treasures;
 
-        treasures = TreasuresLoaderUtil.loadTreasures(Path.of("task5004/src/by/epam/task5004/source/treasures.txt"));
+        treasuresPath = Path.of(String.valueOf(
+                Main.class.getResource("/by/epam/task5004/source/treasures.txt"))
+                .substring(6));
+
+        treasures = TreasuresLoaderUtil.loadTreasures(treasuresPath);
         input = new UserInput();
         userViewAction = new UserViewAction(input, treasures);
         userViewAction.start();
