@@ -1,10 +1,17 @@
 package by.epam.task5004.treasures;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Objects;
 
-public class CoinsChest extends Treasure {
+public class CoinsChest extends Treasure implements Serializable {
     private PreciousMetal metal;
     private int coinsNumber;
+
+    public CoinsChest(){
+        this.metal=PreciousMetal.OTHER;
+        this.coinsNumber=0;
+    }
 
     public CoinsChest(PreciousMetal metal, int coinsNumber, BigDecimal cost) {
         super(cost);
@@ -26,6 +33,21 @@ public class CoinsChest extends Treasure {
 
     public void setCoinsNumber(int coinsNumber) {
         this.coinsNumber = coinsNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CoinsChest)) return false;
+        if (!super.equals(o)) return false;
+        CoinsChest that = (CoinsChest) o;
+        return coinsNumber == that.coinsNumber &&
+                metal == that.metal;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), metal, coinsNumber);
     }
 
     @Override

@@ -1,18 +1,29 @@
 package by.epam.task5004.treasures;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Objects;
 
-public class Decoration extends Treasure {
+public class Decoration extends Treasure implements Serializable {
     private DecorationType type;
     private double weight;
     private PreciousMetal[] metals;
     private GemType[] gemsTypes;
 
+    public Decoration(){
+        this.type = DecorationType.OTHER;
+        this.weight = 0.0;
+        this.metals = null;
+        this.gemsTypes=null;
+    }
+
     public Decoration(DecorationType type, double weight, PreciousMetal[] metals, BigDecimal cost) {
         super(cost);
         this.type = type;
         this.weight = weight;
+        this.metals = null;
+        this.gemsTypes=null;
     }
 
     public Decoration(DecorationType type, double weight, PreciousMetal[] metals, GemType[] gemsTypes, BigDecimal cost) {
@@ -53,6 +64,26 @@ public class Decoration extends Treasure {
 
     public void setGemsTypes(GemType[] gemsTypes) {
         this.gemsTypes = gemsTypes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Decoration)) return false;
+        if (!super.equals(o)) return false;
+        Decoration that = (Decoration) o;
+        return Double.compare(that.weight, weight) == 0 &&
+                type == that.type &&
+                Arrays.equals(metals, that.metals) &&
+                Arrays.equals(gemsTypes, that.gemsTypes);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(super.hashCode(), type, weight);
+        result = 31 * result + Arrays.hashCode(metals);
+        result = 31 * result + Arrays.hashCode(gemsTypes);
+        return result;
     }
 
     @Override
