@@ -1,6 +1,6 @@
-package by.epam.task5004.logic;
+package by.epam.task5004.dao;
 
-import by.epam.task5004.treasures.*;
+import by.epam.task5004.bean.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

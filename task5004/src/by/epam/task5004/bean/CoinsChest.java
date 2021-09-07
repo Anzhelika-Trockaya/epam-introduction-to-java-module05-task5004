@@ -1,4 +1,4 @@
-package by.epam.task5004.treasures;
+package by.epam.task5004.bean;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

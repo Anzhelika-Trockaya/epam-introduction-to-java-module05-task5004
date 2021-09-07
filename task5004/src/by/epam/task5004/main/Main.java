@@ -12,10 +12,9 @@ package by.epam.task5004.main;
 //дракона. Реализовать возможность просмотра сокровищ, выбора самого дорогого по стоимости сокровища и
 //выбора сокровищ на заданную сумму.
 
-import by.epam.task5004.logic.TreasuresLoaderUtil;
-import by.epam.task5004.logic.UserInput;
-import by.epam.task5004.logic.UserViewAction;
-import by.epam.task5004.treasures.Treasure;
+import by.epam.task5004.dao.TreasuresLoaderUtil;
+import by.epam.task5004.view.UserInput;
+import by.epam.task5004.bean.Treasure;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -27,9 +26,9 @@ public class Main {
         UserViewAction userViewAction;
         List<Treasure> treasures;
 
-        treasures = TreasuresLoaderUtil.loadTreasures(Path.of("task5004/src/by/epam/task5004/main/treasures.txt"));
+        treasures = TreasuresLoaderUtil.loadTreasures(Path.of("task5004/src/by/epam/task5004/source/treasures.txt"));
         input = new UserInput();
-        userViewAction=new UserViewAction(input,treasures);
+        userViewAction = new UserViewAction(input, treasures);
         userViewAction.start();
     }
 }

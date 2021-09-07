@@ -1,8 +1,12 @@
-package by.epam.task5004.logic;
+package by.epam.task5004.main;
 
-import by.epam.task5004.treasures.Treasure;
+import by.epam.task5004.bean.Treasure;
+import by.epam.task5004.logic.TreasuresLogic;
+import by.epam.task5004.view.OutputUtil;
+import by.epam.task5004.view.UserInput;
 
 import java.math.BigDecimal;
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class UserViewAction {
@@ -50,7 +54,7 @@ public class UserViewAction {
         List<Treasure> allTreasures;
 
         allTreasures = treasuresLogic.getTreasures();
-        OutputUtil.printMessage("---------------  All treasures:  ---------------");
+        OutputUtil.printMessage("\n---------------  All treasures:  ---------------");
         OutputUtil.printTreasures(allTreasures);
         processTheInputToMenu();
     }
@@ -72,7 +76,7 @@ public class UserViewAction {
                     processTheInputToMenu();
                 }
             }
-        } catch(IllegalArgumentException exc){
+        } catch(InputMismatchException exc){
             OutputUtil.printMessage(exc.getMessage());
             processTheInputToMenu();
         }
@@ -82,7 +86,7 @@ public class UserViewAction {
     private void viewTheMostExpensive(){
         Treasure mostExpensiveTreasure;
 
-        OutputUtil.printMessage("---------------  The most expensive treasure is:  ---------------");
+        OutputUtil.printMessage("\n---------------  The most expensive treasure is:  ---------------");
         mostExpensiveTreasure=treasuresLogic.findTheMostExpensive();
         OutputUtil.printTreasure(mostExpensiveTreasure);
         processTheInputToMenu();
@@ -91,20 +95,21 @@ public class UserViewAction {
         BigDecimal amount;
         List<Treasure> selectedTreasures;
 
-        OutputUtil.printMessage("----------------  Treasures for a given amount  -----------------");
+        OutputUtil.printMessage("\n----------------  Treasures for a given amount  -----------------");
         OutputUtil.printMessage("Enter amount: ");
 
         amount = input.readBigDecimal();
 
         if(amount.compareTo(BigDecimal.ZERO)>0){
             selectedTreasures = treasuresLogic.selectTreasuresForAGivenAmount(amount);
+
             if(selectedTreasures.size()>0){
                 OutputUtil.printTreasures(selectedTreasures);
             } else{
                 OutputUtil.printMessage("All treasures are most worth then amount!");
             }
         } else{
-            OutputUtil.printMessage("Amount must be positive!");
+            OutputUtil.printMessage("Incorrect amount!");
             treasuresForAmount();
         }
         processTheInputToMenu();

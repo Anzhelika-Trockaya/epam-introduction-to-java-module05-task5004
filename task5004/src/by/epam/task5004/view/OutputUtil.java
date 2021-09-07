@@ -1,6 +1,6 @@
-package by.epam.task5004.logic;
+package by.epam.task5004.view;
 
-import by.epam.task5004.treasures.*;
+import by.epam.task5004.bean.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +18,7 @@ public class OutputUtil {
 
 
     public static void printStartMenu() {
-        System.out.println(LINE);
+        System.out.println("\n" + LINE);
         System.out.println(DRAGON_AND_TREASURES);
         System.out.println("  MENU");
         System.out.println(TO_VIEW);
@@ -39,7 +39,7 @@ public class OutputUtil {
     }
 
     public static void printMessage(String message) {
-        System.out.println(message);
+        System.out.println("\n" + message);
     }
 
     public static void printTreasures(List<Treasure> treasures) {

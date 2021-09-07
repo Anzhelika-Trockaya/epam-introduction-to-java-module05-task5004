@@ -1,6 +1,6 @@
 package by.epam.task5004.logic;
 
-import by.epam.task5004.treasures.Treasure;
+import by.epam.task5004.bean.Treasure;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

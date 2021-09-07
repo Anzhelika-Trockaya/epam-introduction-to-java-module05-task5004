@@ -1,4 +1,4 @@
-package by.epam.task5004.treasures;
+package by.epam.task5004.bean;
 
 public enum GemType {
     SAPPHIRE,
