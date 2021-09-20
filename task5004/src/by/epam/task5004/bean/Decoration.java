@@ -2,32 +2,51 @@ package by.epam.task5004.bean;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Decoration extends Treasure implements Serializable {
     private DecorationType type;
     private double weight;
-    private PreciousMetal[] metals;
-    private GemType[] gemsTypes;
+    private List<PreciousMetal> metals;
+    private List<GemType> gemsTypes;
 
-    public Decoration(){
+    public Decoration() {
+        super();
         this.type = DecorationType.OTHER;
         this.weight = 0.0;
-        this.metals = null;
-        this.gemsTypes=null;
+        this.metals = new ArrayList<>();
+        this.gemsTypes = new ArrayList<>();
     }
 
-    public Decoration(DecorationType type, double weight, PreciousMetal[] metals, BigDecimal cost) {
+    public Decoration(DecorationType type, double weight, List<PreciousMetal> metals, BigDecimal cost) {
         super(cost);
         this.type = type;
         this.weight = weight;
-        this.metals = null;
-        this.gemsTypes=null;
+        this.metals = new ArrayList<>();
+        this.gemsTypes = new ArrayList<>();
     }
 
-    public Decoration(DecorationType type, double weight, PreciousMetal[] metals, GemType[] gemsTypes, BigDecimal cost) {
+    public Decoration(DecorationType type, double weight, List<PreciousMetal> metals, List<GemType> gemsTypes, BigDecimal cost) {
         super(cost);
+        this.type = type;
+        this.weight = weight;
+        this.metals = metals;
+        this.gemsTypes = gemsTypes;
+    }
+
+    public Decoration(int id, DecorationType type, double weight, List<PreciousMetal> metals, BigDecimal cost) {
+        super(id, cost);
+        this.type = type;
+        this.weight = weight;
+        this.metals = new ArrayList<>();
+        this.gemsTypes = new ArrayList<>();
+    }
+
+    public Decoration(int id, DecorationType type, double weight, List<PreciousMetal> metals,
+                      List<GemType> gemsTypes, BigDecimal cost) {
+        super(id, cost);
         this.type = type;
         this.weight = weight;
         this.metals = metals;
@@ -50,19 +69,19 @@ public class Decoration extends Treasure implements Serializable {
         this.weight = weight;
     }
 
-    public PreciousMetal[] getMetals() {
+    public List<PreciousMetal> getMetals() {
         return metals;
     }
 
-    public void setMetals(PreciousMetal[] metals) {
+    public void setMetals(List<PreciousMetal> metals) {
         this.metals = metals;
     }
 
-    public GemType[] getGemsTypes() {
+    public List<GemType> getGemsTypes() {
         return gemsTypes;
     }
 
-    public void setGemsTypes(GemType[] gemsTypes) {
+    public void setGemsTypes(List<GemType> gemsTypes) {
         this.gemsTypes = gemsTypes;
     }
 
@@ -70,30 +89,29 @@ public class Decoration extends Treasure implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Decoration)) return false;
-        if (!super.equals(o)) return false;
         Decoration that = (Decoration) o;
-        return Double.compare(that.weight, weight) == 0 &&
+        return getId()==that.getId() &&
+                Double.compare(that.weight, weight) == 0 &&
                 type == that.type &&
-                Arrays.equals(metals, that.metals) &&
-                Arrays.equals(gemsTypes, that.gemsTypes);
+                Objects.equals(metals, that.metals) &&
+                Objects.equals(gemsTypes, that.gemsTypes) &&
+                getCost().equals(that.getCost());
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(super.hashCode(), type, weight);
-        result = 31 * result + Arrays.hashCode(metals);
-        result = 31 * result + Arrays.hashCode(gemsTypes);
-        return result;
+        return Objects.hash(getId(), type, weight, metals, gemsTypes, getCost());
     }
 
     @Override
     public String toString() {
         return "Decoration{" +
-                "type=" + type +
+                "id=" + getId() +
+                ", type=" + type +
                 ", weight=" + weight +
-                ", metals=" + Arrays.toString(metals) +
-                ", gemsTypes=" + Arrays.toString(gemsTypes) +
-                ", cost="+this.getCost()+
+                ", metals=" + metals.toString() +
+                ", gemsTypes=" + gemsTypes.toString() +
+                ", cost=" + this.getCost() +
                 '}';
     }
 

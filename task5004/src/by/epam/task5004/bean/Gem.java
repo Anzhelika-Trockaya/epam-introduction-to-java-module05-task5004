@@ -9,12 +9,19 @@ public class Gem extends Treasure implements Serializable {
     private double carat;
 
     public Gem() {
+        super();
         this.type = GemType.OTHER;
         this.carat = 0.0;
     }
 
     public Gem(GemType type, double carat, BigDecimal cost) {
         super(cost);
+        this.type = type;
+        this.carat = carat;
+    }
+
+    public Gem(int id, GemType type, double carat, BigDecimal cost) {
+        super(id, cost);
         this.type = type;
         this.carat = carat;
     }
@@ -39,21 +46,23 @@ public class Gem extends Treasure implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Gem)) return false;
-        if (!super.equals(o)) return false;
         Gem gem = (Gem) o;
-        return Double.compare(gem.carat, carat) == 0 &&
-                type == gem.type;
+        return getId()==gem.getId()&&
+                Double.compare(gem.carat, carat) == 0 &&
+                type == gem.type&&
+                getCost().equals(gem.getCost());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), type, carat);
+        return Objects.hash(getId(),type, carat, getCost());
     }
 
     @Override
     public String toString() {
         return "Gem{" +
-                "type=" + type +
+                "id=" + getId() +
+                ", type=" + type +
                 ", carat=" + carat +
                 ", cost=" + this.getCost() +
                 '}';

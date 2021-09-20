@@ -1,0 +1,55 @@
+Gem id=1 type=RUBY carat=3.5 cost=15000.0
+Gem id=2 type=SAPPHIRE carat=5 cost=24500.0
+Gem id=3 type=DIAMOND carat=4 cost=125000.0
+Gem id=4 type=EMERALD carat=7 cost=235000.0
+Gem id=5 type=PEARL carat=6 cost=98000.0
+Gem id=6 type=OTHER carat=12 cost=25000.0
+Gem id=7 type=RUBY carat=5 cost=31500.0
+Gem id=8 type=SAPPHIRE carat=4 cost=14000.0
+Gem id=9 type=DIAMOND carat=6 cost=335000.0
+Gem id=10 type=EMERALD carat=10 cost=1235000.0
+Gem id=11 type=PEARL carat=4 cost=45000.0
+Gem id=12 type=RUBY carat=4 cost=45500.0
+Gem id=13 type=SAPPHIRE carat=15 cost=450000.0
+Gem id=14 type=DIAMOND carat=12 cost=150000.0
+Gem id=15 type=EMERALD carat=6 cost=300000.0
+Gem id=16 type=PEARL carat=8 cost=95000.0
+Gem id=17 type=RUBY carat=3 cost=4500.0
+Gem id=18 type=SAPPHIRE carat=2 cost=3500.0
+Gem id=19 type=DIAMOND carat=2 cost=30000.0
+Gem id=20 type=EMERALD carat=17 cost=2350000.0
+Gem id=21 type=PEARL carat=5 cost=80000.0
+Tableware id=22 type=BOWL metal=GOLD cost=500.0
+Tableware id=23 type=DISH metal=SILVER cost=300.0
+Tableware id=24 type=JUG metal=GOLD cost=1500.0
+Tableware id=25 type=SPOON metal=GOLD cost=450.0
+Tableware id=26 type=FORK metal=GOLD cost=220.0
+Tableware id=27 type=KNIFE metal=GOLD cost=150.0
+Tableware id=28 type=OTHER metal=GOLD cost=1500.0
+Tableware id=29 type=BOWL metal=GOLD cost=500.0
+Tableware id=30 type=DISH metal=SILVER cost=300.0
+Tableware id=31 type=JUG metal=GOLD cost=1500.0
+Tableware id=32 type=SPOON metal=GOLD cost=450.0
+Tableware id=33 type=FORK metal=GOLD cost=220.0
+Tableware id=34 type=KNIFE metal=GOLD cost=150.0
+Decoration id=35 type=RING weight=2.0 metals={GOLD PLATINUM} gemsTypes={} cost=350.0
+Decoration id=36 type=CROWN weight=250.0 metals={GOLD} gemsTypes={RUBY DIAMOND} cost=5065000.0
+Decoration id=37 type=CROWN weight=350.0 metals={GOLD} gemsTypes={RUBY DIAMOND EMERALD} cost=7000000.0
+Decoration id=38 type=NECKLACE weight=200.0 metals={PLATINUM} gemsTypes={DIAMOND SAPPHIRE EMERALD} cost=1465000.0
+Decoration id=39 type=BRACELET weight=14.0 metals={GOLD PLATINUM} gemsTypes={} cost=35000.0
+Decoration id=40 type=EARRINGS weight=14.0 metals={PLATINUM} gemsTypes={EMERALD} cost=68000.0
+Decoration id=41 type=OTHER weight=5.0 metals={GOLD} gemsTypes={} cost=5000.0
+Decoration id=42 type=RING weight=5.0 metals={SILVER} gemsTypes={} cost=550.0
+Decoration id=43 type=CROWN weight=250.0 metals={GOLD} gemsTypes={} cost=3105000.0
+Decoration id=44 type=CROWN weight=200.0 metals={GOLD} gemsTypes={EMERALD} cost=2300000.0
+Decoration id=45 type=NECKLACE weight=200.0 metals={GOLD} gemsTypes={DIAMOND EMERALD} cost=365000.0
+Decoration id=46 type=BRACELET weight=18.0 metals={GOLD PLATINUM SILVER} gemsTypes={} cost=35000.0
+Decoration id=47 type=EARRINGS weight=10.0 metals={PLATINUM GOLD} gemsTypes={} cost=168000.0
+CoinsChest id=48 metal=SILVER coinsNumber=25000 cost=1250000.0
+CoinsChest id=49 metal=SILVER coinsNumber=50000 cost=2500000.0
+CoinsChest id=50 metal=GOLD coinsNumber=50000 cost=5000000.0
+CoinsChest id=51 metal=GOLD coinsNumber=25000 cost=2500000.0
+CoinsChest id=52 metal=SILVER coinsNumber=2500 cost=125000.0
+CoinsChest id=53 metal=SILVER coinsNumber=5000 cost=250000.0
+CoinsChest id=54 metal=GOLD coinsNumber=50000 cost=5000000.0
+CoinsChest id=55 metal=GOLD coinsNumber=25000 cost=2500000.0

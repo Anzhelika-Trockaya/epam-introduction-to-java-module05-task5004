@@ -2,17 +2,32 @@ package by.epam.task5004.bean;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Objects;
 
-public class Treasure implements Serializable {
+public abstract class Treasure implements Serializable {
+    private int id;
     private BigDecimal cost;
 
     public Treasure() {
+        this.id = 0;
         this.cost = BigDecimal.ZERO;
     }
 
     public Treasure(BigDecimal cost) {
+        this.id = 0;
         this.cost = cost;
+    }
+
+    public Treasure(int id, BigDecimal cost) {
+        this.id = id;
+        this.cost = cost;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public BigDecimal getCost() {
@@ -24,22 +39,11 @@ public class Treasure implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Treasure)) return false;
-        Treasure treasure = (Treasure) o;
-        return Objects.equals(cost, treasure.cost);
-    }
+    public abstract boolean equals(Object o);
 
     @Override
-    public int hashCode() {
-        return Objects.hash(cost);
-    }
+    public abstract int hashCode();
 
     @Override
-    public String toString() {
-        return "Treasure{" +
-                "cost=" + cost +
-                '}';
-    }
+    public abstract String toString();
 }

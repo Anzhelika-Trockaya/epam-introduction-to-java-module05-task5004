@@ -8,9 +8,16 @@ public class CoinsChest extends Treasure implements Serializable {
     private PreciousMetal metal;
     private int coinsNumber;
 
-    public CoinsChest(){
-        this.metal=PreciousMetal.OTHER;
-        this.coinsNumber=0;
+    public CoinsChest() {
+        super();
+        this.metal = PreciousMetal.OTHER;
+        this.coinsNumber = 0;
+    }
+
+    public CoinsChest(int id, PreciousMetal metal, int coinsNumber, BigDecimal cost) {
+        super(id, cost);
+        this.metal = metal;
+        this.coinsNumber = coinsNumber;
     }
 
     public CoinsChest(PreciousMetal metal, int coinsNumber, BigDecimal cost) {
@@ -39,23 +46,25 @@ public class CoinsChest extends Treasure implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CoinsChest)) return false;
-        if (!super.equals(o)) return false;
         CoinsChest that = (CoinsChest) o;
-        return coinsNumber == that.coinsNumber &&
-                metal == that.metal;
+        return getId()==that.getId() &&
+                coinsNumber == that.coinsNumber &&
+                metal == that.metal &&
+                getCost().equals(that.getCost());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), metal, coinsNumber);
+        return Objects.hash(getId(),metal, coinsNumber, getCost());
     }
 
     @Override
     public String toString() {
         return "CoinsChest{" +
-                "metal=" + metal +
+                "id=" + getId() +
+                ", metal=" + metal +
                 ", coinsNumber=" + coinsNumber +
-                ", cost="+this.getCost()+
+                ", cost=" + this.getCost() +
                 '}';
     }
 }
