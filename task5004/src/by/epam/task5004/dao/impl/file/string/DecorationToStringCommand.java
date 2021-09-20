@@ -31,7 +31,7 @@ public class DecorationToStringCommand implements TreasureToStringCommand {
     private String listOfMetalsToString(List<PreciousMetal> metals) throws DAOException {
         String metalsString;
 
-        if(!metals.isEmpty()) {
+        if (!metals.isEmpty()) {
             metalsString = "{";
             metalsString += metals.get(0);
 
@@ -42,7 +42,7 @@ public class DecorationToStringCommand implements TreasureToStringCommand {
             metalsString += "}";
 
             return metalsString;
-        } else{
+        } else {
             throw new DAOException("Decoration without any metals!");
         }
     }

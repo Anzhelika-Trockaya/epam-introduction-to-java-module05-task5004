@@ -10,17 +10,17 @@ public class CoinsChestToStringCommand implements TreasureToStringCommand {
         String treasureString;
         CoinsChest chest;
 
-        if(treasure instanceof CoinsChest) {
-            chest=(CoinsChest) treasure;
+        if (treasure instanceof CoinsChest) {
+            chest = (CoinsChest) treasure;
             treasureString = "CoinsChest"
                     + " id=" + chest.getId()
                     + " metal=" + chest.getMetal()
-                    + " coinsNumber="+chest.getCoinsNumber()
-                    + " cost="+chest.getCost();
+                    + " coinsNumber=" + chest.getCoinsNumber()
+                    + " cost=" + chest.getCost();
 
             return treasureString;
 
-        } else{
+        } else {
             throw new DAOException();
         }
     }

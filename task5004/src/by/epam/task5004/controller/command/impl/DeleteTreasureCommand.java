@@ -25,11 +25,11 @@ public class DeleteTreasureCommand implements Command {
 
         try {
             if (paramId[0].equalsIgnoreCase("id") && paramId[1].matches("[1-9][0-9]*")) {
-                isCorrectId=true;
+                isCorrectId = true;
                 id = Integer.parseInt(paramId[1]);
                 service.deleteTreasure(id);
             } else {
-                isCorrectId=false;
+                isCorrectId = false;
             }
             response = UserActionViewer.deleteAnswer(isCorrectId);
         } catch (ServiceException serviceException) {

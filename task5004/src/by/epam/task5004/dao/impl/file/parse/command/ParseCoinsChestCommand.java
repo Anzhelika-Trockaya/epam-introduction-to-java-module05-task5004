@@ -21,7 +21,7 @@ public class ParseCoinsChestCommand implements ParseTreasureCommand {
 
         parser = ParameterParser.getInstance();
 
-        id=parser.parseId(treasureParams[0]);
+        id = parser.parseId(treasureParams[0]);
         metal = parser.parseMetal(treasureParams[1]);
         coinsNumber = parser.parseCoinsNumber(treasureParams[2]);
         cost = parser.parseCost(treasureParams[3]);
@@ -30,7 +30,6 @@ public class ParseCoinsChestCommand implements ParseTreasureCommand {
 
         return treasure;
     }
-
 
 
 }

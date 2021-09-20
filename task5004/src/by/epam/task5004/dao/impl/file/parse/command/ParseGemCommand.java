@@ -8,7 +8,7 @@ import by.epam.task5004.dao.impl.file.parse.parser.ParameterParser;
 
 import java.math.BigDecimal;
 
-public class ParseGemCommand implements ParseTreasureCommand{
+public class ParseGemCommand implements ParseTreasureCommand {
     @Override
     public Treasure execute(String[] treasureParams) throws DAOException {
         Treasure treasure;
@@ -22,11 +22,11 @@ public class ParseGemCommand implements ParseTreasureCommand{
         parser = ParameterParser.getInstance();
 
         id = parser.parseId(treasureParams[0]);
-        type=parser.parseGemType(treasureParams[1]);
+        type = parser.parseGemType(treasureParams[1]);
         carat = parser.parseCarat(treasureParams[2]);
         cost = parser.parseCost(treasureParams[3]);
 
-        treasure=new Gem(id, type, carat, cost);
+        treasure = new Gem(id, type, carat, cost);
 
         return treasure;
     }

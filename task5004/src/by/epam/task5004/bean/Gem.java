@@ -47,15 +47,15 @@ public class Gem extends Treasure implements Serializable {
         if (this == o) return true;
         if (!(o instanceof Gem)) return false;
         Gem gem = (Gem) o;
-        return getId()==gem.getId()&&
+        return getId() == gem.getId() &&
                 Double.compare(gem.carat, carat) == 0 &&
-                type == gem.type&&
+                type == gem.type &&
                 getCost().equals(gem.getCost());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(),type, carat, getCost());
+        return Objects.hash(getId(), type, carat, getCost());
     }
 
     @Override

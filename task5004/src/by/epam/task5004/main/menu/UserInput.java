@@ -30,7 +30,7 @@ public class UserInput {
         BigDecimal value;
 
         System.out.println(message);
-        input=scanner.nextLine();
+        input = scanner.nextLine();
         try {
             value = BigDecimal.valueOf(Double.parseDouble(input));
         } catch (IllegalArgumentException exc) {
@@ -40,7 +40,7 @@ public class UserInput {
         return value;
     }
 
-    public String readString(String message){
+    public String readString(String message) {
         String input;
 
         System.out.println(message);

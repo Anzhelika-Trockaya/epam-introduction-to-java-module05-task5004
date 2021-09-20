@@ -44,9 +44,9 @@ public class TreasureParser {
         nameBuilder = new StringBuilder();
         treasureStringsChars = treasureString.toCharArray();
 
-        for (int i = 0; i < treasureStringsChars.length; i++) {
-            if (treasureStringsChars[i] != ' ') {
-                nameBuilder.append(treasureStringsChars[i]);
+        for (char c : treasureStringsChars) {
+            if (c != ' ') {
+                nameBuilder.append(c);
             } else {
                 break;
             }

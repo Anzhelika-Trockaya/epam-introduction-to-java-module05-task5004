@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TreasureController implements Controller {
-    private CommandProvider provider = new CommandProvider();
+    private final CommandProvider provider = new CommandProvider();
 
     @Override
     public String doAction(String request) {
@@ -35,8 +35,9 @@ public class TreasureController implements Controller {
             commandNameBuilder = new StringBuilder();
             charsOfRequest = request.toCharArray();
 
-            for (int i = 0; i < charsOfRequest.length; i++) {
-                currentChar = charsOfRequest[i];
+            for (char c : charsOfRequest) {
+                currentChar = c;
+
                 if (currentChar != ' ') {
                     commandNameBuilder.append(currentChar);
                 } else {
@@ -50,7 +51,7 @@ public class TreasureController implements Controller {
         return commandName;
     }
 
-    private String[] takeParams(String request){
+    private String[] takeParams(String request) {
         List<String> treasureParams;
         Pattern parametersPattern;
         Matcher parametersMatcher;

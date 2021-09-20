@@ -5,11 +5,6 @@ import by.epam.task5004.controller.command.impl.parse.ParseException;
 import by.epam.task5004.controller.command.impl.parse.command.ParseTreasureCommand;
 import by.epam.task5004.controller.command.impl.parse.command.ParseTreasureCommandProvider;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class TreasureParser {
     private static final TreasureParser instance = new TreasureParser();
 
@@ -41,15 +36,15 @@ public class TreasureParser {
         String name;
         String[] nameTreasureStrings;
 
-        nameTreasureStrings=treasureStrings[0].split("=");
+        nameTreasureStrings = treasureStrings[0].split("=");
 
-        if(nameTreasureStrings[0].equalsIgnoreCase("name")
-                && nameTreasureStrings[1].matches("([A-Z][a-z]*)+")){
+        if (nameTreasureStrings[0].equalsIgnoreCase("name")
+                && nameTreasureStrings[1].matches("([A-Z][a-z]*)+")) {
 
-            name=nameTreasureStrings[1];
+            name = nameTreasureStrings[1];
             return name;
 
-        } else{
+        } else {
             throw new ParseException("Incorrect treasures name!");
         }
     }
@@ -58,13 +53,13 @@ public class TreasureParser {
         String[] treasureParams;
         String parametersRegex;
 
-        parametersRegex="[a-zA-Z]+=(([a-zA-Z0-9.]+)|(\\{[^{]*}))";
-        treasureParams = new String[treasureStrings.length-1];
+        parametersRegex = "[a-zA-Z]+=(([a-zA-Z0-9.]+)|(\\{[^{]*}))";
+        treasureParams = new String[treasureStrings.length - 1];
 
         for (int i = 1; i < treasureStrings.length; i++) {
-            if (treasureStrings[i].matches(parametersRegex)){
-                treasureParams[i-1]=treasureStrings[i];
-            } else{
+            if (treasureStrings[i].matches(parametersRegex)) {
+                treasureParams[i - 1] = treasureStrings[i];
+            } else {
                 throw new ParseException("Incorrect request");
             }
         }

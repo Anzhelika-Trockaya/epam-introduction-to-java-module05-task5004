@@ -24,7 +24,7 @@ public class ParseTablewareCommand implements ParseTreasureCommand {
         metal = parser.parseMetal(treasureParams[1]);
         cost = parser.parseCost(treasureParams[2]);
 
-        treasure=new Tableware(type, metal, cost);
+        treasure = new Tableware(type, metal, cost);
 
         return treasure;
     }

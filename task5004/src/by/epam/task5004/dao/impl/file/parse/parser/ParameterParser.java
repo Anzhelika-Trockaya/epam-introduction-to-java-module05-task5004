@@ -53,8 +53,8 @@ public class ParameterParser {
 
         preciousMetals = PreciousMetal.values();
 
-        for (int i = 0; i < preciousMetals.length; i++) {
-            if (PreciousMetal.valueOf(metal) == preciousMetals[i]) {
+        for (PreciousMetal preciousMetal : preciousMetals) {
+            if (PreciousMetal.valueOf(metal) == preciousMetal) {
                 return true;
             }
         }
@@ -111,8 +111,8 @@ public class ParameterParser {
 
         types = Decoration.DecorationType.values();
 
-        for (int i = 0; i < types.length; i++) {
-            if (Decoration.DecorationType.valueOf(type) == types[i]) {
+        for (Decoration.DecorationType decorationType : types) {
+            if (Decoration.DecorationType.valueOf(type) == decorationType) {
                 return true;
             }
         }
@@ -142,16 +142,16 @@ public class ParameterParser {
         String[] parameterStrings;
         String[] metalsStrings;
 
-        parameterStrings=parameter.split("=");
+        parameterStrings = parameter.split("=");
 
-        if(parameterStrings[0].equals("metals") && parameterStrings[1].matches("\\{([A-Z]+)(\\s+[A-Z]+)*}")){
+        if (parameterStrings[0].equals("metals") && parameterStrings[1].matches("\\{([A-Z]+)(\\s+[A-Z]+)*}")) {
 
-            metals=new ArrayList<>();
-            metalsStrings=parameterStrings[1].substring(1,parameterStrings[1].length()-1).split("\\s+");
+            metals = new ArrayList<>();
+            metalsStrings = parameterStrings[1].substring(1, parameterStrings[1].length() - 1).split("\\s+");
 
-            for (int i = 0; i < metalsStrings.length; i++) {
-                currentMetal=parseMetal("metal="+metalsStrings[i]);
-                if(!metals.contains(currentMetal)){
+            for (String metalsString : metalsStrings) {
+                currentMetal = parseMetal("metal=" + metalsString);
+                if (!metals.contains(currentMetal)) {
                     metals.add(currentMetal);
                 }
             }
@@ -170,18 +170,18 @@ public class ParameterParser {
         String[] gemsTypesStrings;
 
 
-        parameterStrings=parameter.split("=");
+        parameterStrings = parameter.split("=");
 
-        if(parameterStrings[0].equals("gemsTypes")){
-            if(parameterStrings[1].equals("{}")){
+        if (parameterStrings[0].equals("gemsTypes")) {
+            if (parameterStrings[1].equals("{}")) {
                 return new ArrayList<>();
-            } else{
-                gemsTypes=new ArrayList<>();
-                gemsTypesStrings=parameterStrings[1].substring(1,parameterStrings[1].length()-1).split("\\s+");
+            } else {
+                gemsTypes = new ArrayList<>();
+                gemsTypesStrings = parameterStrings[1].substring(1, parameterStrings[1].length() - 1).split("\\s+");
 
-                for (int i = 0; i < gemsTypesStrings.length; i++) {
-                    currentGemType=parseGemType("type="+gemsTypesStrings[i]);
-                    if(!gemsTypes.contains(currentGemType)){
+                for (String gemsTypesString : gemsTypesStrings) {
+                    currentGemType = parseGemType("type=" + gemsTypesString);
+                    if (!gemsTypes.contains(currentGemType)) {
                         gemsTypes.add(currentGemType);
                     }
                 }
@@ -197,11 +197,11 @@ public class ParameterParser {
         GemType type;
         String[] parameterStrings;
 
-        parameterStrings=parameter.split("=");
+        parameterStrings = parameter.split("=");
 
-        if(parameterStrings[0].equals("type") && existGemType(parameterStrings[1])){
-           type = GemType.valueOf(parameterStrings[1]);
-           return type;
+        if (parameterStrings[0].equals("type") && existGemType(parameterStrings[1])) {
+            type = GemType.valueOf(parameterStrings[1]);
+            return type;
         } else {
             throw new DAOException("Incorrect data!");
         }
@@ -212,8 +212,8 @@ public class ParameterParser {
 
         types = GemType.values();
 
-        for (int i = 0; i < types.length; i++) {
-            if (GemType.valueOf(type) == types[i]) {
+        for (GemType gemType : types) {
+            if (GemType.valueOf(type) == gemType) {
                 return true;
             }
         }
@@ -240,9 +240,9 @@ public class ParameterParser {
         Tableware.TablewareType type;
         String[] parameterStrings;
 
-        parameterStrings=parameter.split("=");
+        parameterStrings = parameter.split("=");
 
-        if(parameterStrings[0].equals("type") && existTablewareType(parameterStrings[1])){
+        if (parameterStrings[0].equals("type") && existTablewareType(parameterStrings[1])) {
             type = Tableware.TablewareType.valueOf(parameterStrings[1]);
             return type;
         } else {
@@ -255,8 +255,8 @@ public class ParameterParser {
 
         types = Tableware.TablewareType.values();
 
-        for (int i = 0; i < types.length; i++) {
-            if (Tableware.TablewareType.valueOf(type) == types[i]) {
+        for (Tableware.TablewareType tablewareType : types) {
+            if (Tableware.TablewareType.valueOf(type) == tablewareType) {
                 return true;
             }
         }

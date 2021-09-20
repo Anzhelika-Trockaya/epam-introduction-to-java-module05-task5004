@@ -42,8 +42,8 @@ public class FileTreasuresDAO implements TreasuresDAO {
             if (reader.ready()) {
                 treasureString = reader.readLine();
                 nextTreasure = parser.parse(treasureString);
-            } else{
-                nextTreasure=null;
+            } else {
+                nextTreasure = null;
             }
         } catch (IOException e) {
             throw new DAOException(e);
@@ -65,7 +65,7 @@ public class FileTreasuresDAO implements TreasuresDAO {
         treasureString = treasureToStringCommand.execute(treasure);
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
-            writer.write("\n"+treasureString);
+            writer.write("\n" + treasureString);
             writer.flush();
         } catch (IOException exception) {
             throw new DAOException(exception);
@@ -120,7 +120,7 @@ public class FileTreasuresDAO implements TreasuresDAO {
 
         closeReader();
 
-        if(!lines.isEmpty()) {
+        if (!lines.isEmpty()) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
 
                 for (int i = 0; i < lines.size() - 1; i++) {
@@ -128,7 +128,7 @@ public class FileTreasuresDAO implements TreasuresDAO {
                     writer.newLine();
                 }
 
-                writer.write(lines.get(lines.size()-1));
+                writer.write(lines.get(lines.size() - 1));
 
             } catch (IOException exception) {
                 throw new DAOException(exception);

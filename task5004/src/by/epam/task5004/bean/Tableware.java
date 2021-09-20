@@ -68,7 +68,7 @@ public class Tableware extends Treasure implements Serializable {
                 '}';
     }
 
-    public static enum TablewareType {
+    public enum TablewareType {
         BOWL,
         DISH,
         JUG,

@@ -20,11 +20,11 @@ public class ParseGemCommand implements ParseTreasureCommand {
 
         parser = ParameterParser.getInstance();
 
-        type=parser.parseGemType(treasureParams[0]);
+        type = parser.parseGemType(treasureParams[0]);
         carat = parser.parseCarat(treasureParams[1]);
         cost = parser.parseCost(treasureParams[2]);
 
-        treasure=new Gem(type, carat, cost);
+        treasure = new Gem(type, carat, cost);
 
         return treasure;
     }

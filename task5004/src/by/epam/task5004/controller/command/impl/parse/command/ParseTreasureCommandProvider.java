@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParseTreasureCommandProvider {
-    private Map<String, ParseTreasureCommand> commands=new HashMap<>();
+    private Map<String, ParseTreasureCommand> commands = new HashMap<>();
 
-    public ParseTreasureCommandProvider(){
+    public ParseTreasureCommandProvider() {
         commands.put("Tableware", new ParseTablewareCommand());
         commands.put("Gem", new ParseGemCommand());
         commands.put("Decoration", new ParseDecorationCommand());
@@ -16,9 +16,9 @@ public class ParseTreasureCommandProvider {
     }
 
     public ParseTreasureCommand getCommand(String commandName) throws ParseException {
-        if(commands.containsKey(commandName)) {
+        if (commands.containsKey(commandName)) {
             return commands.get(commandName);
-        } else{
+        } else {
             throw new ParseException("Incorrect name of treasure!");
         }
     }

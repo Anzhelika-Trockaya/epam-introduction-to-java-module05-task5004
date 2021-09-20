@@ -1,7 +1,7 @@
 package by.epam.task5004.main.menu;
 
 public class TreasuresStringReader {
-    public TreasuresStringReader(){
+    public TreasuresStringReader() {
     }
 
     public String readTreasure(UserInput userInput) {

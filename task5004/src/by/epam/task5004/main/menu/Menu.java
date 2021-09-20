@@ -78,7 +78,7 @@ public class Menu {
         }
     }
 
-    private void runExtraMenu(){
+    private void runExtraMenu() {
         int numberOfAction;
         printMenu();
         numberOfAction = userInput.readInt("Enter number of action: ");

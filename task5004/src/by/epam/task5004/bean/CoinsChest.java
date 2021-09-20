@@ -47,7 +47,7 @@ public class CoinsChest extends Treasure implements Serializable {
         if (this == o) return true;
         if (!(o instanceof CoinsChest)) return false;
         CoinsChest that = (CoinsChest) o;
-        return getId()==that.getId() &&
+        return getId() == that.getId() &&
                 coinsNumber == that.coinsNumber &&
                 metal == that.metal &&
                 getCost().equals(that.getCost());
@@ -55,7 +55,7 @@ public class CoinsChest extends Treasure implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(),metal, coinsNumber, getCost());
+        return Objects.hash(getId(), metal, coinsNumber, getCost());
     }
 
     @Override
