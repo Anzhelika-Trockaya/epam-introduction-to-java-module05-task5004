@@ -26,9 +26,12 @@ public class ParameterParser {
 
         parameterStrings = parameter.split("=");
 
-        if (parameterStrings[0].equals("metal") && existPreciousMetal(parameterStrings[1])) {
+        if (parameterStrings[0].equals("metal")
+                && existPreciousMetal(parameterStrings[1])) {
+
             metal = PreciousMetal.valueOf(parameterStrings[1]);
             return metal;
+
         } else {
             throw new ParseException("Incorrect data of treasure params!");
         }
@@ -40,7 +43,7 @@ public class ParameterParser {
         preciousMetals = PreciousMetal.values();
 
         for (PreciousMetal preciousMetal : preciousMetals) {
-            if (PreciousMetal.valueOf(metal) == preciousMetal) {
+            if (metal.equals(preciousMetal.name())) {
                 return true;
             }
         }
@@ -51,12 +54,17 @@ public class ParameterParser {
     public int parseCoinsNumber(String parameter) throws ParseException {
         int coinsNumber;
         String[] parameterStrings;
+        String coinsNumberRegex;
 
         parameterStrings = parameter.split("=");
+        coinsNumberRegex = "[1-9]\\d*";
 
-        if (parameterStrings[0].equals("coinsNumber") && parameterStrings[1].matches("[1-9]\\d*")) {
+        if (parameterStrings[0].equals("coinsNumber")
+                && parameterStrings[1].matches(coinsNumberRegex)) {
+
             coinsNumber = Integer.parseInt(parameterStrings[1]);
             return coinsNumber;
+
         } else {
             throw new ParseException("Incorrect data of treasure params!");
         }
@@ -70,9 +78,12 @@ public class ParameterParser {
         costRegex = "([1-9]\\d*(\\.\\d{1,2})?)|(\\d+\\.(([1-9]\\d?)|(0[1-9])))";
         parameterStrings = parameter.split("=");
 
-        if (parameterStrings[0].equals("cost") && parameterStrings[1].matches(costRegex)) {
+        if (parameterStrings[0].equals("cost")
+                && parameterStrings[1].matches(costRegex)) {
+
             cost = BigDecimal.valueOf(Double.parseDouble(parameterStrings[1]));
             return cost;
+
         } else {
             throw new ParseException("Incorrect data of treasure params!");
         }
@@ -84,9 +95,12 @@ public class ParameterParser {
 
         parameterStrings = parameter.split("=");
 
-        if (parameterStrings[0].equals("type") && existDecorationType(parameterStrings[1])) {
+        if (parameterStrings[0].equals("type")
+                && existDecorationType(parameterStrings[1])) {
+
             type = Decoration.DecorationType.valueOf(parameterStrings[1]);
             return type;
+
         } else {
             throw new ParseException("Incorrect data of treasure params!");
         }
@@ -98,7 +112,7 @@ public class ParameterParser {
         types = Decoration.DecorationType.values();
 
         for (Decoration.DecorationType decorationType : types) {
-            if (Decoration.DecorationType.valueOf(type) == decorationType) {
+            if (type.equals(decorationType.name())) {
                 return true;
             }
         }
@@ -109,13 +123,17 @@ public class ParameterParser {
     public double parseWeight(String parameter) throws ParseException {
         double weight;
         String[] parameterStrings;
+        String weightRegex;
 
         parameterStrings = parameter.split("=");
+        weightRegex = "([1-9]\\d*(\\.\\d{1,3})?)|(\\d+\\.(([1-9]\\d{1,2})|(\\d[1-9]\\d?)|(\\d\\d[1-9])))";
 
-        if (parameterStrings[0].equals("weight") && parameterStrings[1]
-                .matches("([1-9]\\d*(\\.\\d{1,3})?)|(\\d+\\.(([1-9]\\d{1,2})|(\\d[1-9]\\d?)|(\\d\\d[1-9])))")) {
+        if (parameterStrings[0].equals("weight")
+                && parameterStrings[1].matches(weightRegex)) {
+
             weight = Double.parseDouble(parameterStrings[1]);
             return weight;
+
         } else {
             throw new ParseException("Incorrect data of treasure params!");
         }
@@ -127,10 +145,13 @@ public class ParameterParser {
         PreciousMetal currentMetal;
         String[] parameterStrings;
         String[] metalsStrings;
+        String metalsListRegex;
 
         parameterStrings = parameter.split("=");
+        metalsListRegex = "\\{([A-Z]+)(\\s+[A-Z]+)*}";
 
-        if (parameterStrings[0].equals("metals") && parameterStrings[1].matches("\\{([A-Z]+)(\\s+[A-Z]+)*}")) {
+        if (parameterStrings[0].equals("metals")
+                && parameterStrings[1].matches(metalsListRegex)) {
 
             metals = new ArrayList<>();
             metalsStrings = parameterStrings[1].substring(1, parameterStrings[1].length() - 1).split("\\s+");
@@ -154,11 +175,15 @@ public class ParameterParser {
         GemType currentGemType;
         String[] parameterStrings;
         String[] gemsTypesStrings;
+        String gemsListRegex;
 
 
         parameterStrings = parameter.split("=");
+        gemsListRegex = "\\{(([A-Z]+)(\\s+[A-Z]+)*)?}";
 
-        if (parameterStrings[0].equals("gemsTypes")) {
+        if (parameterStrings[0].equals("gemsTypes")
+                && parameterStrings[1].matches(gemsListRegex)) {
+
             if (parameterStrings[1].equals("{}")) {
                 return new ArrayList<>();
             } else {
@@ -174,6 +199,7 @@ public class ParameterParser {
 
                 return gemsTypes;
             }
+
         } else {
             throw new ParseException("Incorrect data of treasure params!");
         }
@@ -185,9 +211,12 @@ public class ParameterParser {
 
         parameterStrings = parameter.split("=");
 
-        if (parameterStrings[0].equals("type") && existGemType(parameterStrings[1])) {
+        if (parameterStrings[0].equals("type")
+                && existGemType(parameterStrings[1])) {
+
             type = GemType.valueOf(parameterStrings[1]);
             return type;
+
         } else {
             throw new ParseException("Incorrect data of treasure params!");
         }
@@ -199,7 +228,7 @@ public class ParameterParser {
         types = GemType.values();
 
         for (GemType gemType : types) {
-            if (GemType.valueOf(type) == gemType) {
+            if (type.equals(gemType.name())) {
                 return true;
             }
         }
@@ -210,13 +239,17 @@ public class ParameterParser {
     public double parseCarat(String parameter) throws ParseException {
         double carat;
         String[] parameterStrings;
+        String caratRegex;
 
         parameterStrings = parameter.split("=");
+        caratRegex = "([1-9]\\d*(\\.\\d\\d?)?)|(\\d+\\.([1-9]\\d?)|(\\d[1-9]))";
 
-        if (parameterStrings[0].equals("carat") && parameterStrings[1]
-                .matches("([1-9]\\d*(\\.\\d\\d?)?)|(\\d+\\.([1-9]\\d?)|(\\d[1-9]))")) {
+        if (parameterStrings[0].equals("carat")
+                && parameterStrings[1].matches(caratRegex)) {
+
             carat = Double.parseDouble(parameterStrings[1]);
             return carat;
+
         } else {
             throw new ParseException("Incorrect data of treasure params!");
         }
@@ -228,9 +261,12 @@ public class ParameterParser {
 
         parameterStrings = parameter.split("=");
 
-        if (parameterStrings[0].equals("type") && existTablewareType(parameterStrings[1])) {
+        if (parameterStrings[0].equals("type")
+                && existTablewareType(parameterStrings[1])) {
+
             type = Tableware.TablewareType.valueOf(parameterStrings[1]);
             return type;
+
         } else {
             throw new ParseException("Incorrect data of treasure params!");
         }
@@ -242,7 +278,7 @@ public class ParameterParser {
         types = Tableware.TablewareType.values();
 
         for (Tableware.TablewareType tablewareType : types) {
-            if (Tableware.TablewareType.valueOf(type) == tablewareType) {
+            if (type.equals(tablewareType.name())) {
                 return true;
             }
         }

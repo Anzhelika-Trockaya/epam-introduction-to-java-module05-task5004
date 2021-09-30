@@ -21,14 +21,24 @@ public class ParseDecorationCommand implements ParseTreasureCommand {
         List<PreciousMetal> metals;
         List<GemType> gemsTypes;
         BigDecimal cost;
+        int typePositionInArray;
+        int weightPositionInArray;
+        int metalsPositionInArray;
+        int gemsPositionInArray;
+        int costPositionInArray;
 
         parser = ParameterParser.getInstance();
+        typePositionInArray = 0;
+        weightPositionInArray = 1;
+        metalsPositionInArray = 2;
+        gemsPositionInArray = 3;
+        costPositionInArray = 4;
 
-        type = parser.parseDecorationType(treasureParams[0]);
-        weight = parser.parseWeight(treasureParams[1]);
-        metals = parser.parseListOfMetals(treasureParams[2]);
-        gemsTypes = parser.parseListOfGemsTypes(treasureParams[3]);
-        cost = parser.parseCost(treasureParams[4]);
+        type = parser.parseDecorationType(treasureParams[typePositionInArray]);
+        weight = parser.parseWeight(treasureParams[weightPositionInArray]);
+        metals = parser.parseListOfMetals(treasureParams[metalsPositionInArray]);
+        gemsTypes = parser.parseListOfGemsTypes(treasureParams[gemsPositionInArray]);
+        cost = parser.parseCost(treasureParams[costPositionInArray]);
 
         treasure = new Decoration(type, weight, metals, gemsTypes, cost);
 

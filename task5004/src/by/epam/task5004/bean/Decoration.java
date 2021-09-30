@@ -90,7 +90,7 @@ public class Decoration extends Treasure implements Serializable {
         if (this == o) return true;
         if (!(o instanceof Decoration)) return false;
         Decoration that = (Decoration) o;
-        return getId()==that.getId() &&
+        return getId() == that.getId() &&
                 Double.compare(that.weight, weight) == 0 &&
                 type == that.type &&
                 Objects.equals(metals, that.metals) &&
@@ -105,7 +105,7 @@ public class Decoration extends Treasure implements Serializable {
 
     @Override
     public String toString() {
-        return "Decoration{" +
+        return getClass().getSimpleName() + "{" +
                 "id=" + getId() +
                 ", type=" + type +
                 ", weight=" + weight +

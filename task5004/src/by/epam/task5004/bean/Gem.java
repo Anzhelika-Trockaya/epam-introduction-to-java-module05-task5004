@@ -60,7 +60,7 @@ public class Gem extends Treasure implements Serializable {
 
     @Override
     public String toString() {
-        return "Gem{" +
+        return getClass().getSimpleName() + "{" +
                 "id=" + getId() +
                 ", type=" + type +
                 ", carat=" + carat +

@@ -8,10 +8,10 @@ public class Tableware extends Treasure implements Serializable {
     private TablewareType type;
     private PreciousMetal metal;
 
-    public Tableware(){
+    public Tableware() {
         super();
         this.type = TablewareType.OTHER;
-        this.metal=PreciousMetal.OTHER;
+        this.metal = PreciousMetal.OTHER;
     }
 
     public Tableware(TablewareType type, PreciousMetal metal, BigDecimal cost) {
@@ -47,7 +47,7 @@ public class Tableware extends Treasure implements Serializable {
         if (this == o) return true;
         if (!(o instanceof Tableware)) return false;
         Tableware tableware = (Tableware) o;
-        return getId()== tableware.getId()&&
+        return getId() == tableware.getId() &&
                 type == tableware.type &&
                 metal == tableware.metal &&
                 getCost().equals(tableware.getCost());
@@ -60,7 +60,7 @@ public class Tableware extends Treasure implements Serializable {
 
     @Override
     public String toString() {
-        return "Tableware{" +
+        return getClass().getSimpleName() + "{" +
                 "id=" + getId() +
                 ", type=" + type +
                 ", metal=" + metal +

@@ -60,7 +60,7 @@ public class CoinsChest extends Treasure implements Serializable {
 
     @Override
     public String toString() {
-        return "CoinsChest{" +
+        return getClass().getSimpleName() + "{" +
                 "id=" + getId() +
                 ", metal=" + metal +
                 ", coinsNumber=" + coinsNumber +

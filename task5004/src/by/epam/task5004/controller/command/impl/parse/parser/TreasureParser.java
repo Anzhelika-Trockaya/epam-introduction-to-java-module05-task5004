@@ -22,14 +22,18 @@ public class TreasureParser {
         ParseTreasureCommand parseCommand;
         Treasure treasure;
 
-        treasureName = getTreasureName(treasureStrings);
-        treasureParams = getTreasureParamsArray(treasureStrings);
+        if (treasureStrings.length > 1) {
+            treasureName = getTreasureName(treasureStrings);
+            treasureParams = getTreasureParamsArray(treasureStrings);
 
-        parseCommandProvider = new ParseTreasureCommandProvider();
-        parseCommand = parseCommandProvider.getCommand(treasureName);
-        treasure = parseCommand.execute(treasureParams);
+            parseCommandProvider = new ParseTreasureCommandProvider();
+            parseCommand = parseCommandProvider.getCommand(treasureName);
+            treasure = parseCommand.execute(treasureParams);
 
-        return treasure;
+            return treasure;
+        } else {
+            throw new ParseException("Incorrect data of treasure!");
+        }
     }
 
     private String getTreasureName(String[] treasureStrings) throws ParseException {
@@ -38,7 +42,8 @@ public class TreasureParser {
 
         nameTreasureStrings = treasureStrings[0].split("=");
 
-        if (nameTreasureStrings[0].equalsIgnoreCase("name")
+        if (nameTreasureStrings.length == 2
+                && nameTreasureStrings[0].equalsIgnoreCase("name")
                 && nameTreasureStrings[1].matches("([A-Z][a-z]*)+")) {
 
             name = nameTreasureStrings[1];

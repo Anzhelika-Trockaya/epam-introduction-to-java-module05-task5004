@@ -5,11 +5,13 @@ import by.epam.task5004.dao.impl.file.FileTreasuresDAO;
 
 public class DAOProvider {
     private static final DAOProvider instance = new DAOProvider();
-    private TreasuresDAO treasuresDAO;
-    private IdDAO idDAO;
+    private final TreasuresDAO treasuresDAO;
+    private final IdDAO idDAO;
 
 
     private DAOProvider() {
+        treasuresDAO = new FileTreasuresDAO();
+        idDAO = new FileIdDAO();
     }
 
     public static DAOProvider getInstance() {
@@ -17,17 +19,10 @@ public class DAOProvider {
     }
 
     public TreasuresDAO getTreasuresDAO() {
-        treasuresDAO = new FileTreasuresDAO();
         return treasuresDAO;
     }
 
     public IdDAO getIdDAO() {
-        if (idDAO != null) {
-            return idDAO;
-        } else {
-            idDAO = new FileIdDAO();
-        }
-
         return idDAO;
     }
 }

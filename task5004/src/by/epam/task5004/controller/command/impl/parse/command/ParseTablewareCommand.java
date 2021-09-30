@@ -17,12 +17,18 @@ public class ParseTablewareCommand implements ParseTreasureCommand {
         Tableware.TablewareType type;
         PreciousMetal metal;
         BigDecimal cost;
+        int typePositionInArray;
+        int metalPositionInArray;
+        int costPositionInArray;
 
         parser = ParameterParser.getInstance();
+        typePositionInArray = 0;
+        metalPositionInArray = 1;
+        costPositionInArray = 2;
 
-        type = parser.parseTablewareType(treasureParams[0]);
-        metal = parser.parseMetal(treasureParams[1]);
-        cost = parser.parseCost(treasureParams[2]);
+        type = parser.parseTablewareType(treasureParams[typePositionInArray]);
+        metal = parser.parseMetal(treasureParams[metalPositionInArray]);
+        cost = parser.parseCost(treasureParams[costPositionInArray]);
 
         treasure = new Tableware(type, metal, cost);
 

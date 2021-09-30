@@ -44,6 +44,7 @@ public class SelectTreasuresForAmountCommand implements Command {
         } catch (ServiceException serviceException) {
             response = UserActionViewer.exceptionAnswer(serviceException);
         }
+
         return response;
     }
 }

@@ -46,6 +46,7 @@ public class TreasuresServiceImpl implements TreasuresService {
             }
 
             return mustExpensiveTreasure;
+
         } catch (DAOException exception) {
             throw new ServiceException(exception);
         }
@@ -68,6 +69,7 @@ public class TreasuresServiceImpl implements TreasuresService {
             }
 
             return allTreasures;
+
         } catch (DAOException exception) {
             throw new ServiceException(exception);
         }
@@ -126,37 +128,44 @@ public class TreasuresServiceImpl implements TreasuresService {
     private List<Treasure> fillListOfTreasuresToAmount(List<Treasure> selectedTreasures
             , List<Treasure> treasures, BigDecimal amount) {
 
+        List<Treasure> result;
         int lastElementIndexInTreasures;
-        BigDecimal selectedTreasuresAmount;
+        BigDecimal resultAmount;
         BigDecimal tempAmount;
 
-        lastElementIndexInTreasures = treasures.indexOf(selectedTreasures.get(selectedTreasures.size() - 1));
-        selectedTreasuresAmount = countAmountOfTreasures(selectedTreasures);
+        result = new ArrayList<>();
+        result.addAll(selectedTreasures);
+
+        lastElementIndexInTreasures = treasures.indexOf(result.get(result.size() - 1));
+        resultAmount = countAmountOfTreasures(result);
 
         for (int i = lastElementIndexInTreasures + 1; i < treasures.size(); i++) {
-            tempAmount = selectedTreasuresAmount.add(treasures.get(i).getCost());
+            tempAmount = resultAmount.add(treasures.get(i).getCost());
 
             if (amount.compareTo(tempAmount) >= 0) {
-                selectedTreasures.add(treasures.get(i));
-                selectedTreasuresAmount = tempAmount;
+                result.add(treasures.get(i));
+                resultAmount = tempAmount;
             }
         }
 
-        return selectedTreasures;
+        return result;
     }
 
     private List<Treasure> moveLastElement(List<Treasure> selectedTreasures, List<Treasure> treasures) {
         int indexOfElementInTreasures;
         int lastIndexOfTreasures;
+        List<Treasure> result;
 
         lastIndexOfTreasures = treasures.size() - 1;
+        result=new ArrayList<>();
+        result.addAll(selectedTreasures);
 
         for (int i = selectedTreasures.size() - 1; i >= 0; i--) {
-            indexOfElementInTreasures = treasures.indexOf(selectedTreasures.get(i));
+            indexOfElementInTreasures = treasures.indexOf(result.get(i));
 
-            if (indexOfElementInTreasures < lastIndexOfTreasures - 1 - (selectedTreasures.size() - 1 - i)) {
-                selectedTreasures.set(i, treasures.get(indexOfElementInTreasures + 1));
-                return selectedTreasures;
+            if (indexOfElementInTreasures < lastIndexOfTreasures - 1 - (result.size() - 1 - i)) {
+                result.set(i, treasures.get(indexOfElementInTreasures + 1));
+                return result;
             }
         }
 

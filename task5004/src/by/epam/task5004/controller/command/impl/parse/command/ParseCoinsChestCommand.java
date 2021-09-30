@@ -13,6 +13,9 @@ public class ParseCoinsChestCommand implements ParseTreasureCommand {
     public Treasure execute(String[] treasureParams) throws ParseException {
         Treasure treasure;
         ParameterParser parser;
+        int metalPositionInArray;
+        int coinsNumberPositionInArray;
+        int costPositionInArray;
 
         PreciousMetal metal;
         int coinsNumber;
@@ -20,9 +23,13 @@ public class ParseCoinsChestCommand implements ParseTreasureCommand {
 
         parser = ParameterParser.getInstance();
 
-        metal = parser.parseMetal(treasureParams[0]);
-        coinsNumber = parser.parseCoinsNumber(treasureParams[1]);
-        cost = parser.parseCost(treasureParams[2]);
+        metalPositionInArray = 0;
+        coinsNumberPositionInArray = 1;
+        costPositionInArray = 2;
+
+        metal = parser.parseMetal(treasureParams[metalPositionInArray]);
+        coinsNumber = parser.parseCoinsNumber(treasureParams[coinsNumberPositionInArray]);
+        cost = parser.parseCost(treasureParams[costPositionInArray]);
 
         treasure = new CoinsChest(metal, coinsNumber, cost);
 

@@ -29,15 +29,12 @@ public class TreasureController implements Controller {
         String commandName = "";
         StringBuilder commandNameBuilder;
         char[] charsOfRequest;
-        char currentChar;
 
         if (!request.isEmpty()) {
             commandNameBuilder = new StringBuilder();
             charsOfRequest = request.toCharArray();
 
-            for (char c : charsOfRequest) {
-                currentChar = c;
-
+            for (char currentChar : charsOfRequest) {
                 if (currentChar != ' ') {
                     commandNameBuilder.append(currentChar);
                 } else {
@@ -55,8 +52,10 @@ public class TreasureController implements Controller {
         List<String> treasureParams;
         Pattern parametersPattern;
         Matcher parametersMatcher;
+        String parametersRegex;
 
-        parametersPattern = Pattern.compile("[a-zA-Z]+=(([a-zA-Z0-9.]+)|(\\{[^{]*}))");
+        parametersRegex = "[a-zA-Z]+=(([a-zA-Z0-9.,]+)|(\\{[^{]*}))";
+        parametersPattern = Pattern.compile(parametersRegex);
         parametersMatcher = parametersPattern.matcher(request);
         treasureParams = new ArrayList<>();
 

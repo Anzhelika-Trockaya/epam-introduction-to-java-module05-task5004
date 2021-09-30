@@ -19,7 +19,7 @@ public class FindTheMostExpensiveCommand implements Command {
             provider = ServiceProvider.getInstance();
             service = provider.getTreasuresService();
             mostExpensive = service.findTheMostExpensive();
-            response = UserActionViewer.treasureAnswer(mostExpensive);
+            response = UserActionViewer.theMostExpensiveTreasureAnswer(mostExpensive);
 
         } catch (ServiceException serviceException) {
             response = UserActionViewer.exceptionAnswer(serviceException);

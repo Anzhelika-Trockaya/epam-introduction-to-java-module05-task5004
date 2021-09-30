@@ -17,12 +17,18 @@ public class ParseGemCommand implements ParseTreasureCommand {
         GemType type;
         double carat;
         BigDecimal cost;
+        int typePositionInArray;
+        int caratPositionInArray;
+        int costPositionInArray;
 
         parser = ParameterParser.getInstance();
+        typePositionInArray = 0;
+        caratPositionInArray = 1;
+        costPositionInArray = 2;
 
-        type = parser.parseGemType(treasureParams[0]);
-        carat = parser.parseCarat(treasureParams[1]);
-        cost = parser.parseCost(treasureParams[2]);
+        type = parser.parseGemType(treasureParams[typePositionInArray]);
+        carat = parser.parseCarat(treasureParams[caratPositionInArray]);
+        cost = parser.parseCost(treasureParams[costPositionInArray]);
 
         treasure = new Gem(type, carat, cost);
 

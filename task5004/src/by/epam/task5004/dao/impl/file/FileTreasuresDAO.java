@@ -44,6 +44,7 @@ public class FileTreasuresDAO implements TreasuresDAO {
                 nextTreasure = parser.parse(treasureString);
             } else {
                 nextTreasure = null;
+                closeReader();
             }
         } catch (IOException e) {
             throw new DAOException(e);

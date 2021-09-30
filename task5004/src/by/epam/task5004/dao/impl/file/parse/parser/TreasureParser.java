@@ -26,15 +26,22 @@ public class TreasureParser {
         ParseTreasureCommandProvider parseCommandProvider;
         ParseTreasureCommand parseCommand;
         Treasure treasure;
+        String treasureRegex;
 
-        treasureName = getTreasureName(treasureString);
-        treasureParams = getTreasureParamsArray(treasureString);
+        treasureRegex = "[A-Z][a-zA-Z]+( [a-zA-Z]+=(([a-zA-Z0-9.]+)|(\\{[^{]*})))+";
 
-        parseCommandProvider = new ParseTreasureCommandProvider();
-        parseCommand = parseCommandProvider.getCommand(treasureName);
-        treasure = parseCommand.execute(treasureParams);
+        if (treasureString.matches(treasureRegex)) {
+            treasureName = getTreasureName(treasureString);
+            treasureParams = getTreasureParamsArray(treasureString);
 
-        return treasure;
+            parseCommandProvider = new ParseTreasureCommandProvider();
+            parseCommand = parseCommandProvider.getCommand(treasureName);
+            treasure = parseCommand.execute(treasureParams);
+
+            return treasure;
+        } else {
+            throw new DAOException("Incorrect data of treasure!");
+        }
     }
 
     private String getTreasureName(String treasureString) {

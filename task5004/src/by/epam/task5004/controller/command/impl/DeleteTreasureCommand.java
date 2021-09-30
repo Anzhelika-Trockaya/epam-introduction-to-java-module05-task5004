@@ -17,14 +17,16 @@ public class DeleteTreasureCommand implements Command {
         TreasuresService service;
 
         int id;
+        String idRegex;
 
         serviceProvider = ServiceProvider.getInstance();
         service = serviceProvider.getTreasuresService();
 
         paramId = params[0].split("=");
+        idRegex = "[1-9][0-9]*";
 
         try {
-            if (paramId[0].equalsIgnoreCase("id") && paramId[1].matches("[1-9][0-9]*")) {
+            if (paramId[0].equalsIgnoreCase("id") && paramId[1].matches(idRegex)) {
                 isCorrectId = true;
                 id = Integer.parseInt(paramId[1]);
                 service.deleteTreasure(id);

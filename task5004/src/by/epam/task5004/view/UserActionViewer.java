@@ -7,7 +7,7 @@ import by.epam.task5004.view.treasure.ViewTreasureCommandProvider;
 import java.util.List;
 
 public class UserActionViewer {
-    public static String treasureAnswer(Treasure treasure) {
+    public static String theMostExpensiveTreasureAnswer(Treasure treasure) {
         String answer;
         ViewTreasureCommandProvider viewTreasureCommandProvider;
         ViewTreasureCommand viewTreasureCommand;
@@ -21,6 +21,10 @@ public class UserActionViewer {
         }
 
         return answer;
+    }
+
+    public static String answer(String message){
+        return message;
     }
 
     public static String exceptionAnswer(Exception exception) {
